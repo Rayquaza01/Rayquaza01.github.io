@@ -1,0 +1,188 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
+:root {
+  --background: #f6f5f4;
+  --color: black;
+
+  --accent-background: #26a269;
+  --accent-color: white;
+  --accent-link-color: white;
+
+  --gradient-background: #33d17a;
+
+  --code-block-background: #3d3846;
+  --code-block-color: white;
+
+  --inline-code-background: #deddda;
+  --inline-code-color: black;
+
+  --link-color: #1a5fb4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #241f31;
+    --color: white;
+
+    --gradient-background: #241f31;
+
+    --inline-code-background: #3d3846;
+    --inline-code-color: white;
+
+    --link-color: #99c1f1;
+  }
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--color);
+  font-family: Verdana;
+}
+
+.avatar {
+  border-radius: 25px;
+  height: 50%;
+}
+
+header {
+  min-height: 150px;
+  height: 150px;
+  /* background-color: var(--accent-background); */
+  background: linear-gradient(135deg, var(--accent-background), var(--gradient-background));
+  color: var(--accent-color);
+  padding: 0 20px 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  overflow-x: hidden;
+}
+
+footer {
+  /* background-color: var(--accent-background); */
+  background: linear-gradient(135deg, var(--accent-background), var(--gradient-background));
+  color: var(--accent-color);
+  padding: 10px 20px 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+header a,
+footer a {
+  color: var(--accent-link-color);
+}
+
+.display-name {
+  font-weight: bold;
+  font-size: 32px;
+  padding-left: 10px;
+
+  flex-grow: 1;
+}
+
+.rainbow {
+  height: 100%;
+}
+
+.content {
+  padding: 2% 5% 2%;
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    padding: 2% 15% 2%;
+  }
+}
+
+.display-name>a {
+  color: var(--accent-color);
+}
+
+.name:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+p>img {
+  max-width: 100%;
+  max-height: 30vh;
+}
+
+iframe {
+  max-width: 100%;
+  max-height: 30vh;
+  aspect-ratio: 16 / 9;
+}
+
+.masto {
+  background-color: var(--color);
+  mask-image: url("/assets/images/mastodon-logo.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  height: .5em;
+  width: .5em;
+}
+
+.highlight pre {
+  background-color: var(--code-block-background) !important;
+  padding: 10px;
+  border-radius: 10px;
+
+  overflow: scroll;
+}
+
+.highlight pre code {
+  background-color: var(--code-block-background);
+  color: var(--code-block-color);
+  padding: unset;
+  border-radius: unset;
+}
+
+code {
+  background-color: var(--inline-code-background);
+  color: var(--inline-code-color);
+  padding: 3px;
+  border-radius: 5px;
+
+  font-size: 14px;
+}
