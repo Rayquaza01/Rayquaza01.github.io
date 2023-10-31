@@ -1,0 +1,10 @@
+.emote {
+    height: 1.5em;
+    vertical-align: text-top;
+    transition: ease .2s;
+    margin: 0 .2em 0;
+}
+
+.emote:hover {
+    transform: scale(2);
+}
