@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/assets/images/picrew-avatar-cropped.png">
+    <title>{{ page.title }}</title>
+    {% include default-head.html %}
+    {% if page.mathjax %}{%- include mathjax.html -%}{% endif %}
+    {% if page.custom_js %}
+      {% for js_file in page.custom_js %}
+        <script src="/assets/js/{{js_file}}.js" defer></script>
+      {% endfor %}
+    {% endif %}
+    {% if page.custom_css %}
+      {% for css_file in page.custom_css %}
+        <link rel="stylesheet" type="text/css" href="/assets/css/{{css_file}}.css">
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body>
+    {% include header.html %}
+    <div class="content">
+      {{ content }}
+    </div>
+    {% include footer.html %}
+  </body>
+</html>

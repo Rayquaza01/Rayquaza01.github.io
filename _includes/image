@@ -1,0 +1,1 @@
+<img src="{{ include.name }}" alt="{{ include.alt }}" title="{{ include.alt }}">
