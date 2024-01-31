@@ -186,3 +186,58 @@ code {
 
   font-size: 14px;
 }
+
+/*
+ * Details styles based on the demo on MDN
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+ */
+
+details {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0.5em 0.5em 0;
+
+  transition: 0.5s;
+
+  width: fit-content;
+}
+
+summary {
+  padding: 0.5em;
+  margin: -0.5em -0.5em 0;
+
+  cursor: pointer;
+}
+
+details[open] summary {
+  border-bottom: 1px solid;
+  margin-bottom: 0.5em;
+}
+
+details[open] {
+  border-left: 10px solid;
+  border-left-color: var(--accent-background);
+  padding: 0.5em;
+}
+
+label.spoiler {
+  cursor: pointer;
+}
+
+input.spoiler {
+  display: none;
+}
+
+span.spoiler {
+  background-color: black;
+  color: black;
+
+  padding: 3px;
+  border-radius: 5px;
+}
+
+label.spoiler > input:checked + span {
+  background-color: inherit;
+  color: inherit;
+  border: 1px dashed;
+}
