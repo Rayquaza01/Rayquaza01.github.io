@@ -50,6 +50,7 @@ footer {
   }
 }
 
+a code,
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -143,15 +144,48 @@ p {
   line-height: 1.5em;
 }
 
-p>img {
+p > img {
   max-width: 100%;
   max-height: 30vh;
 }
 
-iframe {
+p > iframe {
   max-width: 100%;
   max-height: 30vh;
   aspect-ratio: 16 / 9;
+}
+
+figure {
+  border: thin solid;
+  padding: 5px;
+  text-align: center;
+  width: fit-content;
+  max-width: 700px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 5px;
+}
+
+figure > img {
+  max-width: 100%;
+  max-height: 40vh;
+
+  border-radius: 5px;
+}
+
+figure > iframe {
+  width: 100%;
+  max-width: 700px;
+  max-height: 40vh;
+  aspect-ratio: 16 / 9;
+
+  border-radius: 5px;
+}
+
+figcaption {
+  font: italic smaller sans-serif;
 }
 
 .masto {
