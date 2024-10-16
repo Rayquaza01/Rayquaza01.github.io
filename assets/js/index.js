@@ -1,0 +1,1 @@
+console.log("%cHello there, friend!", "background-color: #613583; color: white; font-weight: bold; font-size: 24px; padding: 10px;")

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Arnaught&#39;s Blog</title>
+  <subtitle></subtitle>
+  <link href="https://rayquaza01.github.io/feed.xml" rel="self" />
+  <link href="https://rayquaza01.github.io/" />
+  <updated>2024-02-21T00:00:00Z</updated>
+  <id>https://rayquaza01.github.io/</id>
+  <author>
+    <name>Arnaught</name>
+  </author>
+  <entry>
+    <title>Happy Birthday, History Cleaner!</title>
+    <link href="https://rayquaza01.github.io/blog/2024/02/21/happy-birthday-historycleaner.html" />
+    <updated>2024-02-21T00:00:00Z</updated>
+    <id>https://rayquaza01.github.io/blog/2024/02/21/happy-birthday-historycleaner.html</id>
+    <content type="html">&lt;p&gt;History Cleaner is 7 years old!&lt;/p&gt;
+&lt;p&gt;The first version was created on February 8, 2017. I originally created it to be a WebExtension port of &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/expire-history-by-days/&quot;&gt;Expire history by days&lt;/a&gt;. This was when Firefox was first switching to WebExtensions and removing support for XUL extensions.&lt;/p&gt;
+&lt;p&gt;Now, 7 years later, it has ~16,000 users on Firefox + ~500 users on Chrome, and is part of Mozilla’s Recommended Extensions Program! &lt;a href=&quot;https://github.com/Rayquaza01/HistoryCleaner/releases/tag/v1.5.0&quot;&gt;Version 1.5.0&lt;/a&gt; came out just a few weeks ago, featuring a UI refresh and a new timer mode to delete history on a set interval.&lt;/p&gt;
+&lt;p&gt;Thank you to everyone who uses History Cleaner!&lt;/p&gt;
+</content>
+  </entry>
+</feed>
