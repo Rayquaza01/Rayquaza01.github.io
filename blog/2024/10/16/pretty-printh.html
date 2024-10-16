@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/assets/images/avatar.png">
+    <title>Picotron pretty_printh and ANSI Codes for Colored Logs</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/emotes.css">
+<!-- <link rel="stylesheet" type="text/css" href="/assets/css/prism.css"> -->
+
+    
+    
+    
+  </head>
+  <body>
+    <header>
+    <img src="/assets/images/avatar.png" class="avatar" alt="My avatar.">
+    <span class="display-name"><a href="/">Rayquaza01</a></span>
+    <img src="/assets/images/rainbow-tilt.svg" class="rainbow" alt="A pride flag.">
+</header>
+
+    <div class="content">
+      <h1>Picotron pretty_printh and ANSI Codes for Colored Logs</h1>
+<p>
+  October 16, 2024
+  
+    | Tags:
+    
+      <a href="/tagged/picotron">picotron</a>
+    
+      <a href="/tagged/programming">programming</a>
+    
+      <a href="/tagged/software">software</a>
+    
+  
+</p>
+<hr>
+<p>This isn’t a Picotron specific thing, but you can use ANSI escape codes inside printh to make your logs colorful, which can be helpful with debugging.</p>
+<figure>
+    <img src="/assets/images/blog/pretty-printh-demo.png" alt="A demo of Pretty Printh" title="A demo of Pretty Printh">
+    <figcaption>A demo of Pretty Printh</figcaption>
+</figure>
+<p>To set the color, typically you do <code>\033[38;5;&lt;COLOR&gt;m</code> or <code>\033[38;2;&lt;RED&gt;;&lt;GREEN&gt;;&lt;BLUE&gt;m</code>. This sets the foreground color to a color from this chart or an RGB color code (if your terminal <a href="https://github.com/termstandard/colors">supports truecolor</a>).</p>
+<p>This just works in Picotron, but you have to do <code>\27</code> instead of <code>\033</code>. (This is the escape code for ESC, which is 27 in decimal and 033 in octal.)</p>
+<p>However, writing ANSI codes by hand is a pain, so I wrote a function to make inserting these codes easier, using a bbcode-like syntax.</p>
+<ul>
+<li>Foreground color can be set with <code>[fg=1][/fg]</code> or <code>[fg=#ff0000][/fg]</code></li>
+<li>Background color can be set with <code>[bg=1][/bg]</code> or <code>[bg=#ff0000][/bg]</code></li>
+<li>Bold can be set with <code>[b][/b]</code></li>
+<li>Italics can be set with <code>[i][/i]</code></li>
+<li>Underline can be set with <code>[u][/u]</code></li>
+</ul>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> <span class="token function">pretty_printh</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+	s <span class="token operator">=</span> s
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[fg=(#?%w+)]"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+			<span class="token keyword">if</span> c<span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"^%d+$"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+				<span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"\27[38;5;%sm"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+
+			<span class="token keyword">if</span> c<span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"^#[%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F]$"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+				<span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+					<span class="token string">"\27[38;2;%d;%d;%dm"</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				<span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+		<span class="token keyword">end</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[/fg]"</span><span class="token punctuation">,</span> <span class="token string">"\27[39m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[bg=(#?%w+)]"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+			<span class="token keyword">if</span> c<span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"^%d+$"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+				<span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"\27[48;5;%sm"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+
+			<span class="token keyword">if</span> c<span class="token punctuation">:</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"^#[%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F][%da-fA-F]$"</span><span class="token punctuation">)</span> <span class="token keyword">then</span>
+				<span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+					<span class="token string">"\27[48;2;%d;%d;%dm"</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+					<span class="token function">tonum</span><span class="token punctuation">(</span><span class="token string">"0x"</span> <span class="token operator">..</span> c<span class="token punctuation">:</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				<span class="token punctuation">)</span>
+			<span class="token keyword">end</span>
+		<span class="token keyword">end</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[/bg]"</span><span class="token punctuation">,</span> <span class="token string">"\27[49m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[u]"</span><span class="token punctuation">,</span> <span class="token string">"\27[4m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[/u]"</span><span class="token punctuation">,</span> <span class="token string">"\27[24m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[b]"</span><span class="token punctuation">,</span> <span class="token string">"\27[1m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[/b]"</span><span class="token punctuation">,</span> <span class="token string">"\27[22m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[i]"</span><span class="token punctuation">,</span> <span class="token string">"\27[3m"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">:</span><span class="token function">gsub</span><span class="token punctuation">(</span><span class="token string">"%[/i]"</span><span class="token punctuation">,</span> <span class="token string">"\27[23m"</span><span class="token punctuation">)</span>
+
+	<span class="token function">printh</span><span class="token punctuation">(</span>s <span class="token operator">..</span> <span class="token string">"\27[0m"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> <span class="token function">error</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"[fg=1][b][ERROR][/b][/fg]: "</span> <span class="token operator">..</span> msg<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> <span class="token function">warn</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"[fg=3][b][WARNING][/b][/fg]: "</span> <span class="token operator">..</span> msg<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> <span class="token function">info</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"[fg=4][b][INFO][/b][/fg]: "</span> <span class="token operator">..</span> msg<span class="token punctuation">)</span>
+<span class="token keyword">end</span></code></pre>
+<p>Here’s the code that I used to get the example in the screenshot:</p>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">function</span> <span class="token function">left_pad</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> ch<span class="token punctuation">,</span> len<span class="token punctuation">)</span>
+	<span class="token keyword">while</span> <span class="token operator">#</span>s <span class="token operator">&lt;</span> len <span class="token keyword">do</span>
+		s <span class="token operator">=</span> ch <span class="token operator">..</span> s
+	<span class="token keyword">end</span>
+
+	<span class="token keyword">return</span> s
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> <span class="token function">_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"[fg=6][b][u]Pretty Printh Demo[/u][/b][/fg]"</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token keyword">do</span>
+		str <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+			<span class="token string">"[fg=%d]color %s[/fg]\t[fg=%d]color %s[/fg]\t[fg=%d]color %s[/fg]\t[fg=%d]color %s[/fg]"</span><span class="token punctuation">,</span>
+			i<span class="token punctuation">,</span> <span class="token function">left_pad</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">left_pad</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token function">left_pad</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+			i <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token function">left_pad</span><span class="token punctuation">(</span><span class="token function">tostr</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+		<span class="token punctuation">)</span>
+
+		<span class="token function">pretty_printh</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+	<span class="token keyword">end</span>
+
+	<span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"this is an error"</span><span class="token punctuation">)</span>
+	<span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"this is a warning"</span><span class="token punctuation">)</span>
+	<span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"this is informative"</span><span class="token punctuation">)</span>
+
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"this is a line with [b]bold[/b], [i]italics[/i], and [u]underlines[/u]"</span><span class="token punctuation">)</span>
+
+	<span class="token function">pretty_printh</span><span class="token punctuation">(</span><span class="token string">"[bg=#ffffff][fg=#241f31]this is a line with hex colors[/fg][/bg]"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span></code></pre>
+<p>This post was originally posted <a href="https://www.lexaloffle.com/bbs/?tid=144691">on the Picotron BBS</a>. The code for <code>pretty_printh</code> can also be found <a href="https://gist.github.com/Rayquaza01/2d8fed846362775168b0fd6153e875ba">at this gist</a>.</p>
+
+
+    </div>
+    <footer>
+    <div class="col">
+        <h4>Links</h4>
+        <a href="/">Home</a>
+        <span><a href="/blog">Blog</a> (<a href="/feed.xml">RSS</a>)</span>
+        <a href="https://github.com/Rayquaza01">GitHub</a>
+        <a href="https://ko-fi.com/arnaught">Support Me on Ko-Fi</a>
+    </div>
+    <div class="col">
+        <h4>Credits</h4>
+        <a href="/emote-licenses">Emote Licenses</a>
+        <a href="/open-source-licenses">Open Source Licenses</a>
+    </div>
+</footer>
+
+  </body>
+</html>

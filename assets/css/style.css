@@ -1,3 +1,5 @@
+@import url("https://prismjs.catppuccin.com/macchiato.css");
+
 html,
 body {
   margin: 0;
@@ -34,6 +36,8 @@ footer {
   --inline-code-color: black;
 
   --link-color: #1a5fb4;
+
+  --catppuccin-macchiato-bg: #24273A;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -197,17 +201,19 @@ figcaption {
   width: .5em;
 }
 
-.highlight pre {
-  background-color: var(--code-block-background) !important;
+pre {
+  background-color: var(--catppuccin-macchiato-bg) !important;
   padding: 10px;
   border-radius: 10px;
 
   overflow: scroll;
+
+  /* disable the border prism gives the code block */
+  /* border: none !important; */
 }
 
-.highlight pre code {
-  background-color: var(--code-block-background);
-  color: var(--code-block-color);
+pre code {
+  background-color: var(--catppuccin-macchiato-bg);
   padding: unset;
   border-radius: unset;
 }
@@ -274,4 +280,15 @@ label.spoiler > input:checked + span {
   background-color: inherit;
   color: inherit;
   border: 1px dashed;
+}
+
+a.header-anchor {
+  opacity: 0.5;
+  color: var(--color);
+  transition-duration: 0.5s;
+  text-decoration: none;
+}
+
+a.header-anchor:hover {
+  opacity: 1;
 }
