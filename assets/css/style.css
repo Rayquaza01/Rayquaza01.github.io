@@ -275,3 +275,14 @@ label.spoiler > input:checked + span {
   color: inherit;
   border: 1px dashed;
 }
+
+a.header-anchor {
+  opacity: 0.5;
+  color: var(--color);
+  transition-duration: 0.5s;
+  text-decoration: none;
+}
+
+a.header-anchor:hover {
+  opacity: 1;
+}
