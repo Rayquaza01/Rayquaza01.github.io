@@ -12,7 +12,7 @@ permalink: /
         <!-- <link rel="stylesheet" type="text/css" href="/assets/css/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/assets/css/emotes.css">
         <script src="/assets/js/index.js"></script>
-        <title>{{ page.title }}</title>
+        <title>{{ title }}</title>
     </head>
     <body>
         <div class="content">
@@ -35,7 +35,7 @@ permalink: /
 
                 <h1>Apps</h1>
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/HistoryCleaner">History Cleaner</a> {%- include emote name="typescript" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/HistoryCleaner">History Cleaner</a> {%- include 'emote', name: "typescript" -%}</h2>
 
                     <p>
                         A browser extension that automatically deletes your browsing history after a specified number of days.
@@ -43,13 +43,13 @@ permalink: /
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://addons.mozilla.org/en-US/firefox/addon/history-cleaner/">{%- include badge-amo.html -%}</a>
-                        <a href="https://chrome.google.com/webstore/detail/history-cleaner/epoabannnmjdknejdggkgjoebomipene">{%- include badge-cws.html -%}</a>
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/history-cleaner/">{%- include 'badge-amo.html' -%}</a>
+                        <a href="https://chrome.google.com/webstore/detail/history-cleaner/epoabannnmjdknejdggkgjoebomipene">{%- include 'badge-cws.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/changelogger">Changelogger</a> {%- include emote name="typescript" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/changelogger">Changelogger</a> {%- include 'emote', name: "typescript" -%}</h2>
 
                     <p>
                         A browser extension that fetches the changelogs for recently updated extensions in Firefox or Thunderbird,
@@ -57,88 +57,88 @@ permalink: /
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://addons.mozilla.org/en-US/firefox/addon/changelogger/">{%- include badge-amo.html -%}</a>
-                        <a href="https://addons.thunderbird.net/En-us/thunderbird/addon/changelogger/">{%- include badge-atn.html -%}</a>
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/changelogger/">{%- include 'badge-amo.html' -%}</a>
+                        <a href="https://addons.thunderbird.net/En-us/thunderbird/addon/changelogger/">{%- include 'badge-atn.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/quick-tab-switch">Quick Tab Switch</a> {%- include emote name="typescript" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/quick-tab-switch">Quick Tab Switch</a> {%- include 'emote', name: "typescript" -%}</h2>
 
                     <p>
                         A browser extension that lets you quickly switch between and filter tabs using the keyboard.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-tab-switcher/">{%- include badge-amo.html -%}</a>
+                        <a href="https://addons.mozilla.org/en-US/firefox/addon/quick-tab-switcher/">{%- include 'badge-amo.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/Streaker">Streaker</a> {%- include emote name="typescript" -%} {%- include emote name="react" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/Streaker">Streaker</a> {%- include 'emote', name: "typescript" -%} {%- include 'emote', name: "react" -%}</h2>
 
                     <p>
                         A web app that lets you keep streaks for various tasks.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://Rayquaza01.github.io/Streaker">{%- include badge-browser.html -%}</a>
+                        <a href="https://Rayquaza01.github.io/Streaker">{%- include 'badge-browser.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/multi-stopwatch">Multi Stopwatch</a> {%- include emote name="javascript" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/multi-stopwatch">Multi Stopwatch</a> {%- include 'emote', name: "javascript" -%}</h2>
 
                     <p>
                         A web app that lets you use multiple named stopwatches simultaneously.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://Rayquaza01.github.io/multi-stopwatch">{%- include badge-browser.html -%}</a>
+                        <a href="https://Rayquaza01.github.io/multi-stopwatch">{%- include 'badge-browser.html' -%}</a>
                     </div>
                 </div>
 
                 <h1>Games</h1>
 
                 <div class="card">
-                    <h2><a href="https://github.com/rayquaza01/enchanted-gemstones">Enchanted Gemstones</a> {%- include emote name="pico_8" -%}</h2>
+                    <h2><a href="https://github.com/rayquaza01/enchanted-gemstones">Enchanted Gemstones</a> {%- include 'emote', name: "pico_8" -%}</h2>
 
                     <p>
                         A Columns/Magic Jewelry clone for Pico8. Submission for LowRezJam 2020.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://rayquaza01.itch.io/pico-draw">{%- include badge-itch.html -%}</a>
+                        <a href="https://rayquaza01.itch.io/pico-draw">{%- include 'badge-itch.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/pico-draw/">Pico-Draw</a> {%- include emote name="pico_8" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/pico-draw/">Pico-Draw</a> {%- include 'emote', name: "pico_8" -%}</h2>
 
                     <p>
                         A 64x64 drawing application created in Pico8, and a submission for LowRezJam 2023.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://rayquaza01.itch.io/pico-draw">{%- include badge-itch.html -%}</a>
+                        <a href="https://rayquaza01.itch.io/pico-draw">{%- include 'badge-itch.html' -%}</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/rayquaza01/minesweeper">Mines</a> {%- include emote name="pico_8" -%}</h2>
+                    <h2><a href="https://github.com/rayquaza01/minesweeper">Mines</a> {%- include 'emote', name: "pico_8" -%}</h2>
 
                     <p>
                         A Pico8 minesweeper game.
                     </p>
 
                     <div class="badge-box">
-                        <a href="https://rayquaza01.itch.io/mines">{%- include badge-itch.html -%}</a>
+                        <a href="https://rayquaza01.itch.io/mines">{%- include 'badge-itch.html' -%}</a>
                     </div>
                 </div>
 
                 <h1>Libraries</h1>
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/tasker-types">Tasker Types</a> {%- include emote name="typescript" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/tasker-types">Tasker Types</a> {%- include 'emote', name: "typescript" -%}</h2>
 
                     <p>
                         A set of TypeScript definitions for the JavaScript functions provided for <a href="https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm">Tasker</a>.
@@ -146,7 +146,7 @@ permalink: /
                 </div>
 
                 <div class="card">
-                    <h2><a href="https://github.com/Rayquaza01/nativemessaging">nativemessaging</a> {%- include emote name="python" -%}</h2>
+                    <h2><a href="https://github.com/Rayquaza01/nativemessaging">nativemessaging</a> {%- include 'emote', name: "python" -%}</h2>
 
                     <p>A Python library that provides boilerplate functions for getting started with the Webextension NativeMessaging API.</p>
                 </div>
@@ -154,6 +154,6 @@ permalink: /
             </div>
         </div>
 
-        {%- include footer.html -%}
+        {%- include 'footer.html' -%}
     </body>
 </html>

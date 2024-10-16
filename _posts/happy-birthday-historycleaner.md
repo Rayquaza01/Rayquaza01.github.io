@@ -3,7 +3,9 @@ layout: post
 title: "Happy Birthday, History Cleaner!"
 date: 2024-02-21
 categories: blog
-tags: personal programming
+tags:
+    - personal
+    - programming
 ---
 
 History Cleaner is 7 years old!

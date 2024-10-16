@@ -1,0 +1,16 @@
+---
+eleventyImport:
+    collections: ["drafts"]
+permalink: /drafts/
+layout: default
+title: All Draft Posts
+draft: true
+---
+
+<h1>All Blog Posts</h1>
+
+<ul>
+{% for post in collections.drafts | reverse %}
+    <li><a href="{{ post.url }}">{{ post.data.title }}</a> - {{ post.data.date | toReadableDate }}</li>
+{% endfor %}
+</ul>

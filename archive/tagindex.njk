@@ -1,0 +1,15 @@
+---
+permalink: /tagged/
+type: tag
+layout: default
+title: Tags
+---
+
+<h1>List of Tags</h1>
+
+<ul>
+{% set tags = collections | keys | sort %}
+{% for tag in tags %}
+    <li><a href="/tagged/{{ tag }}">{{ tag }}</a></li>
+{% endfor %}
+</ul>

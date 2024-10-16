@@ -1,1 +1,0 @@
-<img src="/assets/emotes/{{ include.name }}.png" alt=":{{ include.name }}:" title=":{{ include.name }}:" class="emote">

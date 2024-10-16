@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
+<h1>{{ title }}</h1>
 <p>
-  {{ page.date | date: "%b %-d, %Y" }}
-  {% if page.tags %}
+  {{ date | toReadableDate }}
+  {% if tags %}
     | Tags:
-    {% for tag in page.tags %}
-      <a href="/blog/tagged/{{tag}}">{{tag}}</a>
+    {% for tag in tags %}
+      <a href="/tagged/{{tag}}">{{tag}}</a>
     {% endfor %}
   {% endif %}
 </p>

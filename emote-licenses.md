@@ -1,6 +1,6 @@
 ---
 title: Emote Licenses
-permalink: /emote-licenses
+permalink: /emote-licenses.html
 layout: default
 ---
 

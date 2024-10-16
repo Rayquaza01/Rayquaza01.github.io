@@ -1,6 +1,7 @@
 ---
 title: Open Source Licenses
 layout: default
+permalink: /open-source-licenses.html
 ---
 
 # MathJax
