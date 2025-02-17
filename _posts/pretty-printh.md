@@ -6,6 +6,7 @@ tags:
     - picotron
     - programming
     - software
+photoswipe: true
 ---
 
 This isn't a Picotron specific thing, but you can use ANSI escape codes inside printh to make your logs colorful, which can be helpful with debugging.

@@ -7,6 +7,7 @@
     <title>{{ title }}</title>
     {% include 'default-head.html' %}
     {% if mathjax %}{%- include 'mathjax.html' -%}{% endif %}
+    {% if photoswipe %}{%- include 'photoswipe.html' -%}{% endif %}
     {% if custom_js %}
       {% for js_file in custom_js %}
         <script src="/assets/js/{{js_file}}.js" defer></script>

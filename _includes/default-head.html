@@ -2,3 +2,10 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/emotes.css">
 <!-- <link rel="stylesheet" type="text/css" href="/assets/css/prism.css"> -->
 <link href="https://prismjs.catppuccin.com/macchiato.css" rel="stylesheet">
+{% if opengraph %}
+{% if title %}<meta property="og:title" content="{{ title }}">{% endif %}
+{% if opengraph.type %}<meta property="og:type" content="{{ opengraph.type }}">{% else %}<meta property="og:type" content="website">{% endif %}
+{% if opengraph.description %}<meta property="og:description" content="{{ opengraph.description | strip_html | xml_escape }}">{% endif %}
+{% if opengraph.image %}<meta property="og:image" content="{{ opengraph.image | url }}">{% endif %}
+{% if opengraph.image_alt %}<meta property="og:image:alt" content="{{ opengraph.image_alt | strip_html | xml_escape }}">{% endif %}
+{% endif %}

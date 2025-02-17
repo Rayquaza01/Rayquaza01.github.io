@@ -1,4 +1,6 @@
-<figure>
-    <img src="{{ src }}" alt="{{ alt | strip_html | xml_escape }}" title="{{ alt | strip_html | xml_escape }}">
-    <figcaption>{{ alt }}</figcaption>
+<figure class="pswp-figure">
+    <a href="{{ src }}" data-pswp-width="{{ src | ImageWidth }}" data-pswp-height="{{ src | ImageHeight }}" target="_blank">
+        <img src="{{ src }}" alt="{{ alt | xml_escape }}">
+    </a>
+    <figcaption>{% if caption %}{{ caption }}{% else %}{{ alt }}{% endif %}</figcaption>
 </figure>

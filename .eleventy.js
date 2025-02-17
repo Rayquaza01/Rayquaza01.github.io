@@ -5,6 +5,8 @@ const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownItFootnote = require("markdown-it-footnote");
 
+const sharp = require("sharp");
+
 const monthText = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 /**
@@ -29,6 +31,18 @@ function toUTCDatePermalink(date) {
   const month = (date.getUTCMonth() + 1).toString().padStart(2, "0");
   const day = date.getUTCDate().toString().padStart(2, "0");
   return `${year}/${month}/${day}`;
+}
+
+async function ImageWidth(src) {
+  const metadata = await sharp(src.substring(1)).metadata();
+
+  return metadata.width;
+}
+
+async function ImageHeight(src) {
+  const metadata = await sharp(src.substring(1)).metadata();
+
+  return metadata.height;
 }
 
 module.exports = function (eleventyConfig) {
@@ -112,6 +126,9 @@ module.exports = function (eleventyConfig) {
     }
   });
 
+  eleventyConfig.addLiquidFilter("ImageWidth", ImageWidth);
+  eleventyConfig.addLiquidFilter("ImageHeight", ImageHeight);
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom",
     outputPath: "/feed.xml",
@@ -132,6 +149,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy("assets")
+
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/photoswipe/dist/photoswipe-lightbox.esm.min.js": "assets/js/photoswipe/photoswipe-lightbox.esm.min.js",
+    "node_modules/photoswipe/dist/photoswipe.esm.min.js": "assets/js/photoswipe/photoswipe.esm.min.js",
+    "node_modules/photoswipe/dist/photoswipe.css": "assets/css/photoswipe.css"
+  });
 
   eleventyConfig.addFilter("keys", obj => Object.keys(obj));
 

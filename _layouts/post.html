@@ -2,12 +2,12 @@
 layout: default
 ---
 <h1>{{ title }}</h1>
-<p>
+<p class="byline">
   {{ date | toReadableDate }}
   {% if tags %}
     | Tags:
     {% for tag in tags %}
-      <a href="/tagged/{{tag}}">{{tag}}</a>
+      <a href="/tagged/{{tag}}" class="tag">{{tag}}</a>
     {% endfor %}
   {% endif %}
 </p>
