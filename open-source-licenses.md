@@ -15,3 +15,7 @@ Pygments is licensed under the [Unlicense](https://github.com/jwarby/jekyll-pygm
 # Prism
 
 PrismJS is licensed under the [MIT License](https://github.com/PrismJS/prism/blob/master/LICENSE)
+
+# Photoswipe
+
+Photoswipe is licensed under the [MIT License](https://github.com/dimsemenov/PhotoSwipe/blob/master/LICENSE)
