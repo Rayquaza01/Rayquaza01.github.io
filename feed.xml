@@ -15,8 +15,10 @@
     <updated>2024-10-16T00:00:00Z</updated>
     <id>https://rayquaza01.github.io/blog/2024/10/16/pretty-printh.html</id>
     <content type="html">&lt;p&gt;This isn’t a Picotron specific thing, but you can use ANSI escape codes inside printh to make your logs colorful, which can be helpful with debugging.&lt;/p&gt;
-&lt;figure&gt;
-    &lt;img src=&quot;https://rayquaza01.github.io/assets/images/blog/pretty-printh-demo.png&quot; alt=&quot;A demo of Pretty Printh&quot; title=&quot;A demo of Pretty Printh&quot;&gt;
+&lt;figure class=&quot;pswp-figure&quot;&gt;
+    &lt;a href=&quot;https://rayquaza01.github.io/assets/images/blog/pretty-printh-demo.png&quot; data-pswp-width=&quot;1920&quot; data-pswp-height=&quot;1080&quot; target=&quot;_blank&quot;&gt;
+        &lt;img src=&quot;https://rayquaza01.github.io/assets/images/blog/pretty-printh-demo.png&quot; alt=&quot;A demo of Pretty Printh&quot;&gt;
+    &lt;/a&gt;
     &lt;figcaption&gt;A demo of Pretty Printh&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;To set the color, typically you do &lt;code&gt;&#92;033[38;5;&amp;lt;COLOR&amp;gt;m&lt;/code&gt; or &lt;code&gt;&#92;033[38;2;&amp;lt;RED&amp;gt;;&amp;lt;GREEN&amp;gt;;&amp;lt;BLUE&amp;gt;m&lt;/code&gt;. This sets the foreground color to a color from this chart or an RGB color code (if your terminal &lt;a href=&quot;https://github.com/termstandard/colors&quot;&gt;supports truecolor&lt;/a&gt;).&lt;/p&gt;

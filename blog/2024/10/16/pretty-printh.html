@@ -10,7 +10,11 @@
 <!-- <link rel="stylesheet" type="text/css" href="/assets/css/prism.css"> -->
 <link href="https://prismjs.catppuccin.com/macchiato.css" rel="stylesheet">
 
+
     
+    <link rel="stylesheet" type="text/css" href="/assets/css/photoswipe.css">
+<script src="/assets/js/photoswipe.js" type="module" defer></script>
+
     
     
   </head>
@@ -23,23 +27,25 @@
 
     <div class="content">
       <h1>Picotron pretty_printh and ANSI Codes for Colored Logs</h1>
-<p>
+<p class="byline">
   October 16, 2024
   
     | Tags:
     
-      <a href="/tagged/picotron">picotron</a>
+      <a href="/tagged/picotron" class="tag">picotron</a>
     
-      <a href="/tagged/programming">programming</a>
+      <a href="/tagged/programming" class="tag">programming</a>
     
-      <a href="/tagged/software">software</a>
+      <a href="/tagged/software" class="tag">software</a>
     
   
 </p>
 <hr>
 <p>This isn’t a Picotron specific thing, but you can use ANSI escape codes inside printh to make your logs colorful, which can be helpful with debugging.</p>
-<figure>
-    <img src="/assets/images/blog/pretty-printh-demo.png" alt="A demo of Pretty Printh" title="A demo of Pretty Printh">
+<figure class="pswp-figure">
+    <a href="/assets/images/blog/pretty-printh-demo.png" data-pswp-width="1920" data-pswp-height="1080" target="_blank">
+        <img src="/assets/images/blog/pretty-printh-demo.png" alt="A demo of Pretty Printh">
+    </a>
     <figcaption>A demo of Pretty Printh</figcaption>
 </figure>
 <p>To set the color, typically you do <code>\033[38;5;&lt;COLOR&gt;m</code> or <code>\033[38;2;&lt;RED&gt;;&lt;GREEN&gt;;&lt;BLUE&gt;m</code>. This sets the foreground color to a color from this chart or an RGB color code (if your terminal <a href="https://github.com/termstandard/colors">supports truecolor</a>).</p>
